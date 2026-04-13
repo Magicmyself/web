@@ -278,7 +278,7 @@ export default function App() {
                         ...prev,
                         packageTitle: pkg.title
                       }));
-                      setShowRegistrationForm(true);
+                      setShowMemberSelection(true);
                     }}
                   >
                     选择此套餐
@@ -668,7 +668,7 @@ export default function App() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="max-w-4xl w-full bg-white rounded-3xl overflow-hidden max-h-[90vh] flex flex-col"
+              className="max-w-4xl w-full bg-white rounded-3xl overflow-y-auto max-h-[90vh] flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-8">
@@ -764,8 +764,11 @@ export default function App() {
                           <h6 className="font-medium mb-2">微信支付</h6>
                           <div className="h-48 bg-white rounded-lg flex items-center justify-center">
                             <img 
-                              src={selectedMember.payment?.wechat || 'https://via.placeholder.com/200x200?text=微信二维码'} 
+                              src={`/images/members/payment/${selectedMember.name.toLowerCase()}_wechat.jpg`} 
                               alt="微信支付"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/200x200?text=微信二维码';
+                              }}
                               className="max-h-full max-w-full object-contain"
                             />
                           </div>
@@ -774,8 +777,11 @@ export default function App() {
                           <h6 className="font-medium mb-2">支付宝</h6>
                           <div className="h-48 bg-white rounded-lg flex items-center justify-center">
                             <img 
-                              src={selectedMember.payment?.alipay || 'https://via.placeholder.com/200x200?text=支付宝二维码'} 
+                              src={`/images/members/payment/${selectedMember.name.toLowerCase()}_alipay.jpg`} 
                               alt="支付宝"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/200x200?text=支付宝二维码';
+                              }}
                               className="max-h-full max-w-full object-contain"
                             />
                           </div>
