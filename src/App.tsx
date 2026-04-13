@@ -347,7 +347,7 @@ export default function App() {
                     ...prev,
                     packageTitle: '场照接单'
                   }));
-                  setShowRegistrationForm(true);
+                  setShowMemberSelection(true);
                 }}
               >
                 选择此套餐
@@ -716,7 +716,7 @@ export default function App() {
                     }}
                     disabled={!selectedMember}
                   >
-                    下一步：上传支付凭证
+                    下一步：查看收款码
                   </button>
                 </div>
               </div>
@@ -741,7 +741,7 @@ export default function App() {
             >
               <div className="p-8">
                 <div className="flex justify-between items-center mb-8">
-                  <h3 className="text-2xl font-bold text-[#2b2d42]">上传支付凭证</h3>
+                  <h3 className="text-2xl font-bold text-[#2b2d42]">选择团队成员</h3>
                   <button 
                     onClick={() => setShowPaymentUpload(false)}
                     className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 transition-colors"
@@ -751,108 +751,67 @@ export default function App() {
                 </div>
                 
                 {selectedMember && (
-                  <div className="mb-8">
-                    <h4 className="text-lg font-bold mb-4">支付给：{selectedMember.name}</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className={`border-2 rounded-xl p-4 text-center cursor-pointer transition-all ${paymentData.paymentMethod === 'wechat' ? 'border-primary bg-primary/5' : 'border-gray-200'}`}
-                           onClick={() => setPaymentData(prev => ({ ...prev, paymentMethod: 'wechat' }))}>
-                        <h5 className="font-medium mb-2">微信支付</h5>
-                        <div className="h-48 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <img 
-                            src={selectedMember.payment?.wechat || 'https://via.placeholder.com/200x200?text=微信二维码'} 
-                            alt="微信支付"
-                            className="max-h-full max-w-full object-contain"
-                          />
+                  <div className="space-y-6">
+                    <div className="text-center mb-6">
+                      <h4 className="text-xl font-bold mb-2">{selectedMember.name}</h4>
+                      <p className="text-primary font-medium">{selectedMember.role}</p>
+                    </div>
+                    
+                    <div className="bg-gray-50 rounded-2xl p-6">
+                      <h5 className="text-lg font-bold mb-4">收款码</h5>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="border-2 border-gray-200 rounded-xl p-4 text-center">
+                          <h6 className="font-medium mb-2">微信支付</h6>
+                          <div className="h-48 bg-white rounded-lg flex items-center justify-center">
+                            <img 
+                              src={selectedMember.payment?.wechat || 'https://via.placeholder.com/200x200?text=微信二维码'} 
+                              alt="微信支付"
+                              className="max-h-full max-w-full object-contain"
+                            />
+                          </div>
                         </div>
-                      </div>
-                      <div className={`border-2 rounded-xl p-4 text-center cursor-pointer transition-all ${paymentData.paymentMethod === 'alipay' ? 'border-primary bg-primary/5' : 'border-gray-200'}`}
-                           onClick={() => setPaymentData(prev => ({ ...prev, paymentMethod: 'alipay' }))}>
-                        <h5 className="font-medium mb-2">支付宝</h5>
-                        <div className="h-48 bg-gray-100 rounded-lg flex items-center justify-center">
-                          <img 
-                            src={selectedMember.payment?.alipay || 'https://via.placeholder.com/200x200?text=支付宝二维码'} 
-                            alt="支付宝"
-                            className="max-h-full max-w-full object-contain"
-                          />
+                        <div className="border-2 border-gray-200 rounded-xl p-4 text-center">
+                          <h6 className="font-medium mb-2">支付宝</h6>
+                          <div className="h-48 bg-white rounded-lg flex items-center justify-center">
+                            <img 
+                              src={selectedMember.payment?.alipay || 'https://via.placeholder.com/200x200?text=支付宝二维码'} 
+                              alt="支付宝"
+                              className="max-h-full max-w-full object-contain"
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>
+                    
+                    <div className="bg-gray-50 rounded-2xl p-6">
+                      <h5 className="text-lg font-bold mb-4">联系方式</h5>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <Mail className="text-gray-500" size={20} />
+                          <span>{selectedMember.email}</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-center">
+                      <p className="text-yellow-700 font-medium">添加摄影老师才可以收到返图哦</p>
+                    </div>
+                    
+                    <div className="pt-4">
+                      <button 
+                        type="button"
+                        className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors"
+                        onClick={() => {
+                          setShowPaymentUpload(false);
+                          setSelectedPackage(null);
+                          setSelectedMember(null);
+                        }}
+                      >
+                        完成
+                      </button>
+                    </div>
                   </div>
                 )}
-                
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">上传支付截图</label>
-                    <input 
-                      type="file" 
-                      accept="image/*"
-                      onChange={(e) => setPaymentData(prev => ({ ...prev, paymentScreenshot: e.target.files?.[0] || null }))}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">订单号</label>
-                    <input 
-                      type="text" 
-                      value={paymentData.orderNumber}
-                      onChange={(e) => setPaymentData(prev => ({ ...prev, orderNumber: e.target.value }))}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="请输入订单号"
-                    />
-                  </div>
-                  
-                  <div className="pt-4">
-                    <button 
-                      type="button"
-                      className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-colors"
-                      onClick={async () => {
-                        if (!selectedMember || (!paymentData.paymentScreenshot && !paymentData.orderNumber)) {
-                          alert('请上传支付截图或输入订单号');
-                          return;
-                        }
-                        
-                        try {
-                          const formData = new FormData();
-                          formData.append('coserName', registrationData.coserName);
-                          formData.append('shootDate', registrationData.shootDate);
-                          formData.append('character', registrationData.character);
-                          formData.append('packageTitle', registrationData.packageTitle);
-                          formData.append('memberEmail', selectedMember.email);
-                          if (paymentData.paymentScreenshot) {
-                            formData.append('paymentScreenshot', paymentData.paymentScreenshot);
-                          }
-                          formData.append('orderNumber', paymentData.orderNumber);
-                          
-                          const response = await fetch('/api/send-email', {
-                            method: 'POST',
-                            body: formData
-                          });
-                          
-                          const result = await response.json();
-                          
-                          if (response.ok) {
-                            alert(result.message + '\n' + (result.note || ''));
-                            setShowPaymentUpload(false);
-                            setSelectedPackage(null);
-                            setSelectedMember(null);
-                            setPaymentData({
-                              paymentMethod: 'wechat',
-                              paymentScreenshot: null,
-                              orderNumber: ''
-                            });
-                          } else {
-                            alert('提交失败：' + result.error);
-                          }
-                        } catch (error) {
-                          alert('提交失败：' + error.message);
-                        }
-                      }}
-                    >
-                      提交支付凭证
-                    </button>
-                  </div>
-                </form>
               </div>
             </motion.div>
           </motion.div>
