@@ -1,5 +1,9 @@
 # 推送脚本 - 用于将代码推送到Git仓库并触发Cloudflare Pages部署
 
+# 设置输出编码为UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+[System.Console]::InputEncoding = [System.Text.Encoding]::UTF8
+
 Write-Host "=== 推送脚本开始 ==="
 
 # 检查Git状态
