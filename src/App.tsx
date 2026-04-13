@@ -764,7 +764,7 @@ export default function App() {
                           <h6 className="font-medium mb-2">微信支付</h6>
                           <div className="h-48 bg-white rounded-lg flex items-center justify-center">
                             <img 
-                              src={`/assets/images/members/payment/${selectedMember.name.toLowerCase()}_wechat.jpg`} 
+                              src={`/assets/images/members/payment/${selectedMember.id === 1 ? 'magic' : selectedMember.id === 2 ? 'mikun' : selectedMember.id === 3 ? 'xiaoli' : selectedMember.id === 4 ? 'moli' : 'bread'}_wechat.jpg`} 
                               alt="微信支付"
                               onError={(e) => {
                                 (e.target as HTMLImageElement).src = 'https://via.placeholder.com/200x200?text=微信二维码';
@@ -777,7 +777,7 @@ export default function App() {
                           <h6 className="font-medium mb-2">支付宝</h6>
                           <div className="h-48 bg-white rounded-lg flex items-center justify-center">
                             <img 
-                              src={`/assets/images/members/payment/${selectedMember.name.toLowerCase()}_alipay.jpg`} 
+                              src={`/assets/images/members/payment/${selectedMember.id === 1 ? 'magic' : selectedMember.id === 2 ? 'mikun' : selectedMember.id === 3 ? 'xiaoli' : selectedMember.id === 4 ? 'moli' : 'bread'}_alipay.jpg`} 
                               alt="支付宝"
                               onError={(e) => {
                                 (e.target as HTMLImageElement).src = 'https://via.placeholder.com/200x200?text=支付宝二维码';
