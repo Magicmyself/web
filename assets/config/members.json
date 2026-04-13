@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Magicmyself",
+    "role": "神",
+    "avatarUrl": "assets/images/members/member1.jpg",
+    "description": "Magic就完了",
+    "email": "magic@example.com",
+    "payment": {
+      "wechat": "assets/images/members/payment/magic_wechat.jpg",
+      "alipay": "assets/images/members/payment/magic_alipay.jpg"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Mikun",
+    "role": "牢二次元摄影",
+    "avatarUrl": "assets/images/members/member2.jpg",
+    "description": "全能哥来的，出事就找他！",
+    "email": "mikun@example.com",
+    "payment": {
+      "wechat": "assets/images/members/payment/mikun_wechat.jpg",
+      "alipay": "assets/images/members/payment/mikun_alipay.jpg"
+    }
+  },
+  {
+    "id": 3,
+    "name": "筱黎",
+    "role": "牢二次元摄影加道具师",
+    "avatarUrl": "assets/images/members/member3.jpg",
+    "description": "二次元摄影，神秘道具师，擅长光影塑造与情绪捕捉。",
+    "email": "xiaoli@example.com",
+    "payment": {
+      "wechat": "assets/images/members/payment/xiaoli_wechat.jpg",
+      "alipay": "assets/images/members/payment/xiaoli_alipay.jpg"
+    }
+  },
+  {
+    "id": 4,
+    "name": "墨离凡尘",
+    "role": "牢二次元摄影",
+    "avatarUrl": "assets/images/members/member4.jpg",
+    "description": "坐标武汉/襄阳 擅长亮调， 最近在学习叙事的拍摄方法 热爱galgame，接接galgame互勉喵",
+    "email": "moli@example.com",
+    "payment": {
+      "wechat": "assets/images/members/payment/moli_wechat.jpg",
+      "alipay": "assets/images/members/payment/moli_alipay.jpg"
+    }
+  },
+  {
+    "id": 5,
+    "name": "面包",
+    "role": "牢二次元摄影",
+    "avatarUrl": "assets/images/members/member5.jpg",
+    "description": "牢面包，爱棚拍！",
+    "email": "bread@example.com",
+    "payment": {
+      "wechat": "assets/images/members/payment/bread_wechat.jpg",
+      "alipay": "assets/images/members/payment/bread_alipay.jpg"
+    }
+  }
+]

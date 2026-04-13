@@ -1,0 +1,14 @@
+{
+  "siteName": "MiKun Vsion摄影工作室",
+  "siteSlogan": "定格你的每一个跨次元瞬间",
+  "siteDescription": "二次元摄影作品展示、价格表及约单须知",
+  "pageTitle": "MiKun Vsion摄影工作室",
+  "carouselInterval": 3000,
+  "theme": {
+    "primaryColor": "#ff7b9c",
+    "primaryHoverColor": "#ff5c85",
+    "secondaryColor": "#a6b1e1",
+    "darkColor": "#2b2d42",
+    "backgroundColor": "#f8f9fa"
+  }
+}

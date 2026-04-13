@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "assets/images/posters/poster1.jpg",
+    "title": "MiKun Vsion摄影工作室",
+    "subtitle": "定格你的每一个跨次元瞬间"
+  },
+  {
+    "id": 2,
+    "imageUrl": "assets/images/posters/poster2.jpg",
+    "title": "2026 春季外景招募",
+    "subtitle": "樱花季特惠，记录最美春日物语"
+  },
+  {
+    "id": 3,
+    "imageUrl": "assets/images/posters/poster3.jpg",
+    "title": "专业室内实景棚",
+    "subtitle": "赛博朋克 / 欧式复古 / 和风庭院 全场景覆盖"
+  }
+]

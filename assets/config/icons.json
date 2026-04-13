@@ -1,0 +1,34 @@
+{
+  "icons": [
+    {
+      "name": "sparkles",
+      "label": "Sparkles",
+      "component": "Sparkles"
+    },
+    {
+      "name": "swords",
+      "label": "Swords",
+      "component": "Swords"
+    },
+    {
+      "name": "ghost",
+      "label": "Ghost",
+      "component": "Ghost"
+    },
+    {
+      "name": "crown",
+      "label": "Crown",
+      "component": "Crown"
+    },
+    {
+      "name": "wand2",
+      "label": "Wand2",
+      "component": "Wand2"
+    },
+    {
+      "name": "gamepad2",
+      "label": "Gamepad2",
+      "component": "Gamepad2"
+    }
+  ]
+}

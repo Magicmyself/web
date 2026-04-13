@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #ff7b9c;
+  --color-primary-hover: #ff5c85;
+  --color-secondary: #a6b1e1;
+  --color-dark: #2b2d42;
+}
+
+body {
+  font-family: "Noto Sans SC", sans-serif;
+  background-color: #f8f9fa;
+  color: #2b2d42;
+  scroll-behavior: smooth;
+}
