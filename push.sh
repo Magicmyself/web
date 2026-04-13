@@ -18,7 +18,7 @@ git commit -m "更新项目代码"
 
 # 推送代码
 echo "推送代码到远程仓库..."
-git push origin main:main
+git push origin master:main
 
 echo "=== 推送脚本完成 ==="
 echo "代码已推送，Cloudflare Pages会自动开始部署"
