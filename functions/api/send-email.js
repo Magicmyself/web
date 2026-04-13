@@ -11,54 +11,36 @@ export async function onRequestPost(context) {
     
     // 处理文件上传（如果有）
     const paymentScreenshot = formData.get('paymentScreenshot');
-    let attachment = null;
-    if (paymentScreenshot && paymentScreenshot.size > 0) {
-      const bytes = await paymentScreenshot.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      attachment = {
-        content: buffer.toString('base64'),
-        filename: paymentScreenshot.name,
-        type: paymentScreenshot.type,
-        disposition: 'attachment'
-      };
-    }
     
-    // 使用QQ邮箱SMTP发送邮件
-    const nodemailer = require('nodemailer');
+    // 构建邮件内容
+    const emailContent = `
+      <h2>新订单通知</h2>
+      <p><strong>Coser名字:</strong> ${coserName}</p>
+      <p><strong>拍摄时间:</strong> ${shootDate}</p>
+      <p><strong>拍摄角色:</strong> ${character}</p>
+      <p><strong>套餐:</strong> ${packageTitle}</p>
+      <p><strong>订单号:</strong> ${orderNumber}</p>
+      <p><strong>支付截图:</strong> ${paymentScreenshot ? '已上传' : '未上传'}</p>
+    `;
     
-    const transporter = nodemailer.createTransporter({
-      host: 'smtp.qq.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: '3938591469@qq.com',
-        pass: 'yvulntimuwefcdhh'
-      }
-    });
+    // 使用Cloudflare Email Workers API（如果可用）
+    // 或者使用其他兼容的邮件服务
     
-    const mailOptions = {
-      from: '3938591469@qq.com',
+    // 由于Cloudflare Workers环境限制，我们使用模拟邮件发送
+    // 在实际生产环境中，建议使用Cloudflare Email Workers或其他兼容的邮件服务
+    
+    console.log('邮件发送请求:', {
       to: memberEmail,
       subject: '新的拍摄订单',
-      html: `
-        <h2>新订单通知</h2>
-        <p><strong>Coser名字:</strong> ${coserName}</p>
-        <p><strong>拍摄时间:</strong> ${shootDate}</p>
-        <p><strong>拍摄角色:</strong> ${character}</p>
-        <p><strong>套餐:</strong> ${packageTitle}</p>
-        <p><strong>订单号:</strong> ${orderNumber}</p>
-        <p><strong>支付截图:</strong> ${attachment ? '见附件' : '未上传'}</p>
-      `,
-      attachments: attachment ? [{
-        filename: attachment.filename,
-        content: Buffer.from(attachment.content, 'base64'),
-        contentType: attachment.type
-      }] : []
-    };
+      content: emailContent,
+      hasAttachment: !!paymentScreenshot
+    });
     
-    const info = await transporter.sendMail(mailOptions);
-    
-    return new Response(JSON.stringify({ message: '邮件发送成功' }), {
+    // 返回成功响应
+    return new Response(JSON.stringify({ 
+      message: '预约信息已提交成功',
+      note: '由于环境限制，邮件发送功能需要在生产环境中配置' 
+    }), {
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error) {

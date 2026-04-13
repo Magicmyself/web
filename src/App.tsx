@@ -832,7 +832,7 @@ export default function App() {
                           const result = await response.json();
                           
                           if (response.ok) {
-                            alert('支付凭证已提交，我们会尽快与您联系！');
+                            alert(result.message + '\n' + (result.note || ''));
                             setShowPaymentUpload(false);
                             setSelectedPackage(null);
                             setSelectedMember(null);
